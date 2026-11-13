@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SakayCDO — Live Transit</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============ IPHONE FRAME ============ -->
+  <div class="device">
+    <span class="side-btn silent"></span>
+    <span class="side-btn vol-up"></span>
+    <span class="side-btn vol-down"></span>
+    <span class="side-btn power"></span>
+
+    <div class="screen">
+      <div class="dynamic-island"><i class="cam"></i></div>
+
+      <!-- status bar -->
+      <div class="status-bar">
+        <span class="sb-time" id="statusTime">9:41</span>
+        <div class="sb-icons">
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+          <svg width="16" height="11" viewBox="0 0 16 11" fill="currentColor"><path d="M8 10.2 5.6 7.7a3.4 3.4 0 0 1 4.8 0L8 10.2Zm-4-4.3L2.6 4.4a7.6 7.6 0 0 1 10.8 0L12 5.9a5.6 5.6 0 0 0-8 0ZM.6 2.3a11.6 11.6 0 0 1 14.8 0L14 3.8a9.6 9.6 0 0 0-12 0L.6 2.3Z"/></svg>
+          <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".5" y=".5" width="21" height="11" rx="3.5" stroke="currentColor" opacity=".5"/><rect x="2.5" y="2.5" width="14" height="7" rx="2" fill="currentColor"/><path d="M23 4v4a2.2 2.2 0 0 0 0-4Z" fill="currentColor" opacity=".6"/></svg>
+        </div>
+      </div>
+
+      <main class="app" id="app">
+
+        <!-- ================= LOGIN VIEW ================= -->
+        <section class="view view--login is-active" id="viewLogin">
+          <div class="login-orb"></div>
+          <div class="login-inner">
+
+            <div class="brand">
+              <div class="brand-logo">
+                <svg viewBox="0 0 48 48" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#7ff0e6"/>
+                      <stop offset="1" stop-color="#0fa3a0"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="2" y="2" width="44" height="44" rx="14" fill="url(#lg)" opacity=".16"/>
+                  <rect x="2" y="2" width="44" height="44" rx="14" fill="none" stroke="url(#lg)" stroke-width="1.4" opacity=".55"/>
+                  <path d="M14 33c0-6 4-7 10-7s10-1 10-7" stroke="url(#lg)" stroke-width="3" fill="none" stroke-linecap="round"/>
+                  <circle cx="14" cy="33" r="3.6" fill="#7ff0e6"/>
+                  <circle cx="34" cy="19" r="3.6" fill="#0fa3a0"/>
+                </svg>
+              </div>
+              <h1 class="brand-name">Sakay<span>CDO</span></h1>
+              <p class="brand-tag">Live transit for Cagayan de Oro</p>
+            </div>
+
+            <form class="login-form" id="loginForm" autocomplete="off">
+              <label class="field">
+                <span class="field-label">Username</span>
+                <div class="field-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>
+                  <input type="text" id="username" placeholder="e.g. juan.delacruz" />
+                </div>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Password</span>
+                <div class="field-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="10" width="16" height="10" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+                  <input type="password" id="password" placeholder="••••••••" />
+                  <button type="button" class="eye" id="togglePw" aria-label="Show password">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="2.6"/></svg>
+                  </button>
+                </div>
+              </label>
+
+              <div class="login-row">
+                <label class="check">
+                  <input type="checkbox" id="remember" />
+                  <span class="box"></span>
+                  <span>Remember me</span>
+                </label>
+                <button type="button" class="link" id="btnForgot">Forgot password?</button>
+              </div>
+
+              <button type="submit" class="btn-primary" id="btnLogin">
+                <span class="btn-txt">Sign in</span>
+                <span class="spinner"></span>
+                <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+              </button>
+
+              <div class="divider"><span>or</span></div>
+
+              <button type="button" class="btn-ghost" id="btnGuest">Continue as guest</button>
+            </form>
+
+            <p class="signup-line">New here?
+              <button type="button" class="link link--strong" id="btnCreate">Create account</button>
+            </p>
+
+            <p class="fineprint">Demo build · no real authentication · CDO transit data is simulated</p>
+          </div>
+        </section>
+
+        <!-- ================= APP VIEW ================= -->
+        <section class="view view--app" id="viewApp">
+
+          <header class="app-header">
+            <div class="app-header-top">
+              <div class="user-chip">
+                <div class="avatar">CD</div>
+                <div>
+                  <p class="hello" id="greeting">Maayong buntag</p>
+                  <p class="uname" id="userName">Commuter</p>
+                </div>
+              </div>
+              <button class="icon-btn" data-action="soon" aria-label="Notifications">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 8a6 6 0 1 0-12 0c0 6-2 7-2 7h16s-2-1-2-7"/><path d="M10.5 20a2 2 0 0 0 3 0"/></svg>
+                <i class="badge"></i>
+              </button>
+            </div>
+            <div class="ticker">
+              <span class="chip"><i class="dot"></i>Live network</span>
+              <span class="chip" id="clockChip">9:41 AM</span>
+              <span class="chip" id="weatherChip">⛅ 30°C</span>
+            </div>
+          </header>
+
+          <div class="app-body" id="appBody">
+
+            <!-- ---------- HOME PANEL ---------- -->
+            <div class="tab-panel is-active" data-panel="home">
+
+              <div class="search-wrap">
+                <div class="search-box glass">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+                  <input type="text" id="searchInput" placeholder="Where to in CDO?" autocomplete="off" />
+                  <button class="clear-btn hidden" id="clearSearch" aria-label="Clear">✕</button>
+                </div>
+                <div class="suggestions glass" id="suggestions"></div>
+              </div>
+
+              <div id="planCard"></div>
+
+              <!-- live map -->
+              <div class="card map-card glass">
+                <div class="card-head">
+                  <h3>Live network</h3>
+                  <span class="pill live"><i class="dot"></i>CDO</span>
+                </div>
+                <svg class="map" viewBox="0 0 340 180" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#7ff0e6" stop-opacity=".9"/>
+                      <stop offset="1" stop-color="#38bdf8" stop-opacity=".35"/>
+                    </linearGradient>
+                  </defs>
+                  <g stroke="rgba(255,255,255,.05)" stroke-width="1">
+                    <path d="M0 45H340M0 90H340M0 135H340M85 0V180M170 0V180M255 0V180"/>
+                  </g>
+
+                  <path id="rd1" d="M-10 132 C 60 122, 82 62, 160 64 S 282 42, 352 62"
+                        fill="none" stroke="rgba(255,255,255,.14)" stroke-width="8" stroke-linecap="round"/>
+                  <path d="M-10 132 C 60 122, 82 62, 160 64 S 282 42, 352 62"
+                        fill="none" stroke="url(#mg)" stroke-width="2.4" stroke-linecap="round"
+                        stroke-dasharray="7 9">
+                    <animate attributeName="stroke-dashoffset" from="0" to="-32" dur="1.8s" repeatCount="indefinite"/>
+                  </path>
+
+                  <path id="rd2" d="M28 172 C 70 120, 112 112, 152 82 S 214 42, 302 30"
+                        fill="none" stroke="rgba(255,255,255,.12)" stroke-width="7" stroke-linecap="round"/>
+                  <path d="M28 172 C 70 120, 112 112, 152 82 S 214 42, 302 30"
+                        fill="none" stroke="rgba(125,211,252,.55)" stroke-width="2" stroke-linecap="round"
+                        stroke-dasharray="5 8">
+                    <animate attributeName="stroke-dashoffset" from="0" to="-26" dur="2.4s" repeatCount="indefinite"/>
+                  </path>
+
+                  <path id="rd3" d="M8 60 C 78 70, 118 100, 190 112 S 282 132, 344 120"
+                        fill="none" stroke="rgba(255,255,255,.12)" stroke-width="7" stroke-linecap="round"/>
+                  <path d="M8 60 C 78 70, 118 100, 190 112 S 282 132, 344 120"
+                        fill="none" stroke="rgba(165,180,252,.5)" stroke-width="2" stroke-linecap="round"
+                        stroke-dasharray="5 8">
+                    <animate attributeName="stroke-dashoffset" from="0" to="-26" dur="2.1s" repeatCount="indefinite"/>
+                  </path>
+
+                  <circle r="3.6" fill="#7ff0e6">
+                    <animateMotion dur="11s" repeatCount="indefinite"><mpath href="#rd1"/></animateMotion>
+                  </circle>
+                  <circle r="2.8" fill="#7ff0e6" opacity=".7">
+                    <animateMotion dur="14s" begin="-6s" repeatCount="indefinite"><mpath href="#rd1"/></animateMotion>
+                  </circle>
+                  <circle r="3.2" fill="#7dd3fc">
+                    <animateMotion dur="13s" begin="-3s" repeatCount="indefinite"><mpath href="#rd2"/></animateMotion>
+                  </circle>
+                  <circle r="2.6" fill="#a5b4fc">
+                    <animateMotion dur="16s" begin="-9s" repeatCount="indefinite"><mpath href="#rd3"/></animateMotion>
+                  </circle>
+
+                  <circle cx="160" cy="64" r="12" fill="rgba(127,240,230,.16)">
+                    <animate attributeName="r" values="8;16;8" dur="2.6s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values=".8;0;.8" dur="2.6s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx="160" cy="64" r="4.4" fill="#eafcfa" stroke="#0fa3a0" stroke-width="2"/>
+
+                  <text x="120" y="52" fill="rgba(234,252,250,.4)" font-size="7.5" font-family="Inter,sans-serif">Divisoria</text>
+                  <text x="262" y="40" fill="rgba(234,252,250,.4)" font-size="7.5" font-family="Inter,sans-serif">Carmen</text>
+                  <text x="40" y="160" fill="rgba(234,252,250,.4)" font-size="7.5" font-family="Inter,sans-serif">Agora</text>
+                </svg>
+                <div class="map-legend">
+                  <span><i style="background:#7ff0e6"></i>Jeepney</span>
+                  <span><i style="background:#7dd3fc"></i>Bus</span>
+                  <span><i style="background:#eafcfa"></i>You</span>
+                </div>
+              </div>
+
+              <div class="grid-2">
+                <div class="card mini glass">
+                  <div class="mini-top">
+                    <span class="mini-label">Weather</span>
+                    <span class="mini-icon" id="weatherIcon">⛅</span>
+                  </div>
+                  <p class="mini-big"><span id="weatherTemp">30</span><sup>°C</sup></p>
+                  <p class="mini-sub" id="weatherLabel">Partly cloudy</p>
+                  <div class="mini-foot">
+                    <span id="weatherHumidity">72% RH</span>
+                    <span id="weatherWind">12 km/h</span>
+                  </div>
+                </div>
+
+                <div class="card mini glass">
+                  <div class="mini-top">
+                    <span class="mini-label">Local time</span>
+                    <span class="mini-icon">🕒</span>
+                  </div>
+                  <p class="mini-big"><span id="bigTime">9:41</span> <sup id="bigAmPm">AM</sup></p>
+                  <p class="mini-sub" id="dateText">Mon, Jan 1</p>
+                  <div class="mini-foot">
+                    <span>PHT · UTC+8</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="section-head">
+                <h3>Nearby routes</h3>
+                <button class="link" data-action="tab" data-tab="routes">See all</button>
+              </div>
+              <div class="route-list" id="homeRoutes"></div>
+            </div>
+
+            <!-- ---------- ROUTES PANEL ---------- -->
+            <div class="tab-panel" data-panel="routes">
+              <div class="section-head">
+                <h3>All routes</h3>
+                <span class="muted" id="routeCount">9 routes</span>
+              </div>
+              <div class="chips" id="filterChips">
+                <button class="chip-btn is-on" data-action="filter" data-filter="all">All</button>
+                <button class="chip-btn" data-action="filter" data-filter="Jeepney">Jeepney</button>
+                <button class="chip-btn" data-action="filter" data-filter="Bus">Bus</button>
+              </div>
+              <div class="route-list" id="allRoutes"></div>
+            </div>
+
+            <!-- ---------- ALERTS PANEL ---------- -->
+            <div class="tab-panel" data-panel="alerts">
+              <div class="section-head">
+                <h3>Traffic alerts</h3>
+                <span class="muted">CDO</span>
+              </div>
+              <div class="alert-list" id="alertsList"></div>
+            </div>
+
+            <!-- ---------- ME PANEL ---------- -->
+            <div class="tab-panel" data-panel="me">
+              <div class="card profile glass">
+                <div class="avatar lg">CD</div>
+                <h3 id="meName">Commuter</h3>
+                <p class="muted" id="meHandle">@commuter</p>
+                <span class="pill">Commuter · Cagayan de Oro</span>
+              </div>
+
+              <div class="grid-3">
+                <div class="stat glass"><b>128</b><span>Trips</span></div>
+                <div class="stat glass"><b>₱1.4k</b><span>Saved</span></div>
+                <div class="stat glass"><b>12kg</b><span>CO₂</span></div>
+              </div>
+
+              <div class="card glass list-card">
+                <button class="list-item" data-action="soon"><span>Saved routes</span><b>4 ›</b></button>
+                <button class="list-item" data-action="soon"><span>Fare calculator</span><b>›</b></button>
+                <button class="list-item" data-action="soon"><span>Notifications</span><b>On ›</b></button>
+                <button class="list-item" data-action="soon"><span>About SakayCDO</span><b>v1.0 ›</b></button>
+              </div>
+
+              <button class="btn-ghost danger" data-action="logout">Sign out</button>
+            </div>
+
+          </div>
+
+          <!-- ---------- TAB BAR ---------- -->
+          <nav class="tabbar">
+            <button class="tab-btn is-on" data-action="tab" data-tab="home">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5Z"/></svg>
+              <span>Home</span>
+            </button>
+            <button class="tab-btn" data-action="tab" data-tab="routes">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2.6"/><circle cx="18" cy="6" r="2.6"/><path d="M8.6 18H14a4 4 0 0 0 0-8h-4a4 4 0 0 1 0-8h5.4"/></svg>
+              <span>Routes</span>
+            </button>
+            <button class="tab-btn" data-action="tab" data-tab="alerts">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 6-2 7-2 7h16s-2-1-2-7"/><path d="M10.5 20a2 2 0 0 0 3 0"/></svg>
+              <span>Alerts</span>
+            </button>
+            <button class="tab-btn" data-action="tab" data-tab="me">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>
+              <span>Me</span>
+            </button>
+          </nav>
+        </section>
+
+      </main>
+
+      <!-- ================= LOADING OVERLAY ================= -->
+      <div class="loading-screen" id="loadingScreen">
+        <div class="load-orb"></div>
+        <div class="load-logo">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <defs>
+              <linearGradient id="lgLoad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#7ff0e6"/>
+                <stop offset="1" stop-color="#0fa3a0"/>
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="44" height="44" rx="14" fill="url(#lgLoad)" opacity=".16"/>
+            <rect x="2" y="2" width="44" height="44" rx="14" fill="none" stroke="url(#lgLoad)" stroke-width="1.4" opacity=".55"/>
+            <path d="M14 33c0-6 4-7 10-7s10-1 10-7" stroke="url(#lgLoad)" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="14" cy="33" r="3.6" fill="#7ff0e6"/>
+            <circle cx="34" cy="19" r="3.6" fill="#0fa3a0"/>
+          </svg>
+        </div>
+        <p class="load-title">Sakay<span>CDO</span></p>
+        <div class="load-bar"><i id="loadBar"></i></div>
+        <p class="load-status" id="loadStatus">Connecting to CDO network…</p>
+      </div>
+
+      <!-- toast -->
+      <div class="toast" id="toast"></div>
+
+      <!-- modal -->
+      <div class="modal-scrim" id="modalScrim">
+        <div class="modal glass" id="modal">
+          <div class="modal-handle"></div>
+          <h3 id="modalTitle">Title</h3>
+          <p class="modal-sub" id="modalSub"></p>
+          <div class="modal-body" id="modalBody"></div>
+          <div class="modal-actions" id="modalActions"></div>
+        </div>
+      </div>
+
+      <div class="home-bar"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
